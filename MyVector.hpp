@@ -32,6 +32,7 @@ class MyVector
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			
+			elements_= new T[capacity];
 			// TODO: Your code here
 		}
 		
