@@ -40,6 +40,13 @@ class MyVector
 		MyVector(const MyVector& other) {
 			
 			// TODO: Your code here
+			
+			this->elements_ = new T[other.size()];
+				for(int i =0, i < other.size() ,i++){
+					
+
+			}
+
 			elements_ = other; //calling the array elemnts to setequal to other
 		}
 		
