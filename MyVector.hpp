@@ -24,7 +24,8 @@ class MyVector
 		
 		/// Minimum capacity
 		static constexpr size_t MINIMUM_CAPACITY = 8;
-		
+		//other is a vector
+		//elements is an array
 		/*****************************
 		 * Constructors / Destructors
 		 ****************************/
@@ -43,11 +44,9 @@ class MyVector
 			
 			this->elements_ = new T[other.size()];
 				for(int i =0, i < other.size() ,i++){
-					
+					elements_[i] = other.at(i);
 
 			}
-
-			elements_ = other; //calling the array elemnts to setequal to other
 		}
 		
 		/**
