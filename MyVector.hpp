@@ -32,7 +32,7 @@ class MyVector
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			
-			elements_= new T[capacity];
+			elements_= new T[capacity]; // creates new array with elemnts of type T
 			// TODO: Your code here
 		}
 		
@@ -40,6 +40,7 @@ class MyVector
 		MyVector(const MyVector& other) {
 			
 			// TODO: Your code here
+			elements_ = other; //calling the array elemnts to setequal to other
 		}
 		
 		/**
@@ -50,6 +51,9 @@ class MyVector
 		~MyVector() {
 			
 			// TODO: Your code here
+			this -> clear();	// clears the elements
+			delete [] elements_; /// deletes the memory block
+
 		}
 		
 		/************
@@ -181,6 +185,7 @@ class MyVector
 		void clear() {
 			
 			// TODO: Your code here
+
 		}
 	
 	/**
