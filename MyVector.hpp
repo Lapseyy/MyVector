@@ -46,7 +46,7 @@ class MyVector
 			
 			this->elements_ = new T[other.size()];		//call to class of elements and = to size of other
 				for(int i =0, i < other.size() ,i++){	// create a for looop that caps at other
-					elements_[i] = other.at(i);			//
+					elements_[i] = other.at(i);			//sets elements and other equal to each other
 
 			}
 		}
@@ -72,6 +72,9 @@ class MyVector
 		MyVector& operator=(const MyVector& rhs) {
 			
 			// TODO: Your code here
+			for(int i =0, i < rhs.size() ,i++){	//just like the other we copy to rhs
+					elements_[i] = rhs.at(i);	
+			}
 		}
 		
 		/// Operator overload to at()
