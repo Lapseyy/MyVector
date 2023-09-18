@@ -24,8 +24,10 @@ class MyVector
 		
 		/// Minimum capacity
 		static constexpr size_t MINIMUM_CAPACITY = 8;
+		
 		//other is a vector
 		//elements is an array
+		
 		/*****************************
 		 * Constructors / Destructors
 		 ****************************/
@@ -42,9 +44,9 @@ class MyVector
 			
 			// TODO: Your code here
 			
-			this->elements_ = new T[other.size()];
-				for(int i =0, i < other.size() ,i++){
-					elements_[i] = other.at(i);
+			this->elements_ = new T[other.size()];		//call to class of elements and = to size of other
+				for(int i =0, i < other.size() ,i++){	// create a for looop that caps at other
+					elements_[i] = other.at(i);			//
 
 			}
 		}
