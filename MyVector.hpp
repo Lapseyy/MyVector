@@ -160,7 +160,7 @@ class MyVector
 		 */
 		T& set(size_t index, const T& element) {
 			if(index > capacity_){					//Setting element at index and then throw error if too big
-				throw std::out_of_range;
+				throw std::out_of_range("Out of range");
 			}
 			else{									//making the elements_ at the index to be equal to elements
 				elements_[index] = element;
@@ -231,7 +231,7 @@ class MyVector
 		size_t erase(size_t index) {
 			
 			if (index >= size_){
-				throw std::range_error;
+				throw std::range_error("range error");
 			}
 			for( i = index; i < size_; i++){
 				elements_[i] = elements_[i + 1]
@@ -279,7 +279,7 @@ class MyVector
 		void changeCapacity(size_t c) {
 			
 				if(c > capacity_){		
-				throw std::out_of_range;
+				throw std::out_of_range("Out of range");
 			}
 			
 			capacity_ = c; 
