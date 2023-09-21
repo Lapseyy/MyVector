@@ -105,12 +105,12 @@ class MyVector
 		size_t size() const {
 			
 			// TODO: Your code here
-			return 
+			return size_; 				//returning the size
 		}
 		
 		/// Return the capacity of our internal array
 		size_t capacity() const {
-			
+			return capacity_;			//returning the capacity
 			// TODO: Your code here
 
 		}
@@ -121,7 +121,12 @@ class MyVector
 		 * Otherwise, return false
 		 */
 		bool empty() const {
-			
+			if (size_ = 0){
+				return true;
+			}
+			else {
+				return false;
+			}
 			// TODO: Your code here
 		}
 		
@@ -141,8 +146,8 @@ class MyVector
 		 */
 		void reserve(size_t capacity) {
 			
-			if(capacity <= MINIMUM_CAPACITY){		//making capacity bigger
-					capacity *=2;
+			if(capacity > capacity_){		//setting our capacity bigger than theirs
+					capacity_ *=2;
 
 			}
 
@@ -154,7 +159,13 @@ class MyVector
 		 * Returns a reference to the newly set element (not the original)
 		 */
 		T& set(size_t index, const T& element) {
-			
+			if(index > capacity_){					//Setting element at index and then throw error if too big
+				throw std::out_of_range;
+			}
+			else{									//making the elements_ at the index to be equal to elements
+				elements_[index] = element;
+				return elements_[index];   			//returning  index reference 
+			}
 			// TODO: Your code here
 		}
 		
