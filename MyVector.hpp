@@ -175,7 +175,9 @@ class MyVector
 		 * Returns a reference to the newly inserted element
 		 */
 		T& push_back(const T& element) {
+			
 			return this->insert(size_, element);
+			
 			
 
 			// TODO: Your code here
@@ -187,7 +189,7 @@ class MyVector
 		 * Returns the new size.
 		 */
 		size_t pop_back() {
-			
+			return this->erase(size_);
 			// TODO: Your code here
 		}
 		
@@ -201,7 +203,16 @@ class MyVector
 		 * Returns a reference to the newly added element (not the original).
 		 */
 		T& insert(size_t index, const T& element) {
-			
+			size_++; 
+
+			for( i = size_-1, i  > index, i-- ){
+				elements_[i] = elements_[i-1]; 		//copying over the element at that position and
+			}										//at the same time moving it over while checking 
+
+			elements_[index] = element;
+
+			return elements_[index];
+
 			// TODO: Your code here
 		}
 		
@@ -219,6 +230,14 @@ class MyVector
 		 */
 		size_t erase(size_t index) {
 			
+			if (index >= size_){
+				throw std::range_error;
+			}
+			for( i = index, i < size_, i++){
+				elements_[i] = elements_[i + 1]
+			}
+			size_= size_ -1; 
+			return size_;
 			// TODO: Your code here
 		}
 		
@@ -227,7 +246,7 @@ class MyVector
 		 * data by setting size to zero and resetting the capacity.
 		*/
 		void clear() {
-			
+			this->~MyVector();
 			// TODO: Your code here
 
 		}
