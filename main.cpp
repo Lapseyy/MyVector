@@ -18,6 +18,13 @@ int main()
 {
 	//
 	cout << "Hello! Maybe use this source file for debugging?" << endl;
+	MyVector<int> v;
+	cout << "Never made it here";
+	
+	// //
+	// for ( int i = 0; i < 10; i++ ) {
+	// 	v.push_back(i);
+	// }
 	
 	return 0;
 }

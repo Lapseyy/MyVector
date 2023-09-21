@@ -34,7 +34,6 @@ class MyVector
 		
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
-			
 			elements_= new T[capacity]; // creates new array with elemnts of type T
 			if (MINIMUM_CAPACITY < capacity){
 				capacity_ = capacity; 
@@ -43,7 +42,6 @@ class MyVector
 				capacity_ = MINIMUM_CAPACITY;
 
 			}
-
 			// TODO: Your code here
 		}
 		
@@ -70,9 +68,6 @@ class MyVector
 			
 			// TODO: Your code here
 			this -> clear();	// clears the elements
-			delete [] elements_; // deletes the memory block
-			size_ = 0;			// ressetting suze to be 0	
-			capacity_ = 0;		//resetting capacity to be 0
 
 		}
 		
@@ -247,7 +242,10 @@ class MyVector
 		 * data by setting size to zero and resetting the capacity.
 		*/
 		void clear() {
-			this->~MyVector();
+			
+			delete [] elements_; // deletes the memory block
+			size_ = 0;			// ressetting suze to be 0	
+			capacity_ = 0;		//resetting capacity to be 0
 			// TODO: Your code here
 
 		}
