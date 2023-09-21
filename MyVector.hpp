@@ -53,7 +53,7 @@ class MyVector
 			// TODO: Your code here
 			
 			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
-				for(int i =0, i < other.size() ,i++){	// create a for looop that caps at other
+				for(int i =0; i < other.size(); i++){	// create a for looop that caps at other
 					elements_[i] = other.at(i);			//sets elements and other equal to each other
 
 			}
@@ -84,7 +84,7 @@ class MyVector
 		MyVector& operator=(const MyVector& rhs) {
 			
 			// TODO: Your code here
-			for(int i =0, i < rhs.size() ,i++){	//just like the other we copy to rhs
+			for(int i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
 					elements_[i] = rhs.at(i);	
 			}
 		}
@@ -205,7 +205,7 @@ class MyVector
 		T& insert(size_t index, const T& element) {
 			size_++; 
 
-			for( i = size_-1, i  > index, i-- ){
+			for( i = size_-1; i  > index; i-- ){
 				elements_[i] = elements_[i-1]; 		//copying over the element at that position and
 			}										//at the same time moving it over while checking 
 
@@ -233,7 +233,7 @@ class MyVector
 			if (index >= size_){
 				throw std::range_error;
 			}
-			for( i = index, i < size_, i++){
+			for( i = index; i < size_; i++){
 				elements_[i] = elements_[i + 1]
 			}
 			size_= size_ -1; 
