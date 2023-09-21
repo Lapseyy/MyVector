@@ -36,8 +36,14 @@ class MyVector
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			
 			elements_= new T[capacity]; // creates new array with elemnts of type T
-			size_ = capacity;			//updating size as we change the cap
-			
+			if (MINIMUM_CAPACITY < capacity){
+				capacity_ = capacity; 
+			}									//this creates space of capacity of some size
+			else{
+				capacity_ = MINIMUM_CAPACITY;
+
+			}
+
 			// TODO: Your code here
 		}
 		
@@ -46,11 +52,13 @@ class MyVector
 			
 			// TODO: Your code here
 			
-			this->elements_ = new T[other.size()];		//call to class of elements and = to size of other
+			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
 				for(int i =0, i < other.size() ,i++){	// create a for looop that caps at other
 					elements_[i] = other.at(i);			//sets elements and other equal to each other
 
 			}
+			capacity_ = other.capacity();				//copying the capcity
+			size_ = other.size();					//copying the size
 		}
 		
 		/**
@@ -62,7 +70,9 @@ class MyVector
 			
 			// TODO: Your code here
 			this -> clear();	// clears the elements
-			delete [] elements_; /// deletes the memory block
+			delete [] elements_; // deletes the memory block
+			size_ = 0;			// ressetting suze to be 0	
+			capacity_ = 0;		//resetting capacity to be 0
 
 		}
 		
@@ -102,6 +112,7 @@ class MyVector
 		size_t capacity() const {
 			
 			// TODO: Your code here
+
 		}
 		
 		/**
