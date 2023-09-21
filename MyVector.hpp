@@ -36,6 +36,8 @@ class MyVector
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			
 			elements_= new T[capacity]; // creates new array with elemnts of type T
+			size_ = capacity;			//updating size as we change the cap
+			
 			// TODO: Your code here
 		}
 		
@@ -81,6 +83,8 @@ class MyVector
 		T& operator[](size_t index) const {
 			
 			// TODO: Your code here
+			return elements_[index]; 		// we overload the operator with  elements of index 
+
 		}
 		
 		/************
@@ -91,6 +95,7 @@ class MyVector
 		size_t size() const {
 			
 			// TODO: Your code here
+			return 
 		}
 		
 		/// Return the capacity of our internal array
@@ -125,7 +130,11 @@ class MyVector
 		 */
 		void reserve(size_t capacity) {
 			
-			// TODO: Your code here
+			if(capacity <= MINIMUM_CAPACITY){		//making capacity bigger
+					capacity *=2;
+
+			}
+
 		}
 		
 		/**
@@ -213,7 +222,7 @@ class MyVector
 		size_t capacity_ = 0;
 		
 		/**
-		 * Our internal array of elements of type T.
+		 * Our internal array of elements of type T. Like an array of int
 		 * Starts off as a null pointer.
 		 */
 		T* elements_ = nullptr;
