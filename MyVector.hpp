@@ -53,7 +53,7 @@ class MyVector
 			// TODO: Your code here
 			
 			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
-				for(int i =0; i < other.size(); i++){	// create a for looop that caps at other
+				for(size_t i =0; i < other.size(); i++){	// create a for looop that caps at other
 					elements_[i] = other.at(i);			//sets elements and other equal to each other
 
 			}
@@ -84,9 +84,10 @@ class MyVector
 		MyVector& operator=(const MyVector& rhs) {
 			
 			// TODO: Your code here
-			for(int i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
+			for(size_t i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
 					elements_[i] = rhs.at(i);	
 			}
+			return* this;				//return 'this class itself/obk=ject'
 		}
 		
 		/// Operator overload to at()
@@ -121,7 +122,7 @@ class MyVector
 		 * Otherwise, return false
 		 */
 		bool empty() const {
-			if (size_ = 0){
+			if (size_ == 0){
 				return true;
 			}
 			else {
@@ -132,7 +133,7 @@ class MyVector
 		
 		/// Return a reference to the element at an index
 		T& at(size_t index) const {
-			
+			return elements_[index];
 			// TODO: Your code here
 		}
 		
@@ -205,8 +206,8 @@ class MyVector
 		T& insert(size_t index, const T& element) {
 			size_++; 
 
-			for( i = size_-1; i  > index; i-- ){
-				elements_[i] = elements_[i-1]; 		//copying over the element at that position and
+			for( size_t i = size_-1; i  > index; i-- ){
+			elements_[i] = elements_[i-1]; 		//copying over the element at that position and
 			}										//at the same time moving it over while checking 
 
 			elements_[index] = element;
@@ -233,8 +234,8 @@ class MyVector
 			if (index >= size_){
 				throw std::range_error("range error");
 			}
-			for( i = index; i < size_; i++){
-				elements_[i] = elements_[i + 1]
+			for(size_t i = index; i < size_; i++){
+				elements_[i] = elements_[i + 1];
 			}
 			size_= size_ -1; 
 			return size_;
@@ -303,7 +304,7 @@ class MyVector
 		 */
 		void copyOther(const MyVector& other) {
 			this->~MyVector(); 
-			this->MyVector(other); //calls the constructor that does steps 1-4
+			//this->MyVector(other); //calls the constructor that does steps 1-4
 
 			// TODO: Your code here
 		}
