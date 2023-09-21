@@ -175,7 +175,9 @@ class MyVector
 		 * Returns a reference to the newly inserted element
 		 */
 		T& push_back(const T& element) {
+			return this->insert(size_, element);
 			
+
 			// TODO: Your code here
 		}
 		
@@ -257,6 +259,12 @@ class MyVector
 		 */
 		void changeCapacity(size_t c) {
 			
+				if(c > capacity_){		
+				throw std::out_of_range;
+			}
+			
+			capacity_ = c; 
+
 			// TODO: Your code here
 		}
 		
@@ -275,7 +283,9 @@ class MyVector
 		 * 4. Copy other relevant properties from the 'other' to 'this'
 		 */
 		void copyOther(const MyVector& other) {
-			
+			this->~MyVector(); 
+			this->MyVector(other); //calls the constructor that does steps 1-4
+
 			// TODO: Your code here
 		}
 };
