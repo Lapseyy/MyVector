@@ -35,8 +35,8 @@ class MyVector
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			elements_= new T[capacity]; // creates new array with elemnts of type T
-			capacity_ = MINIMUM_CAPACITY;
-			this->reserve(capacity);
+			capacity_ = DEFAULT_CAPACITY;
+			this->changeCapacity(capacity);
 			// TODO: Your code here
 		}
 		
@@ -136,17 +136,25 @@ class MyVector
 		 * Useful if we know we're about to add a large number of elements, and we'd like to avoid the overhead of many internal changes to capacity.
 		 */
 		void reserve(size_t capacity) {
-			
-			if(capacity > capacity_){		//setting our capacity bigger than theirs
-
-					capacity_ *=2;
-					T* temp_elements_ = new T[capacity_];
-					for( size_t i = 0; i < size_; i++){
-					temp_elements_[i] = elements_[i];
-					}
-				delete[] elements_;
-				elements_ = temp_elements_; 
+			std::cout << "RESERVE CALLED FOR CAPACITY: " << capacity << " C URRENT IS: " << capacity_ << std::endl;
+			if(capacity > capacity_){
+				capacity_ = capacity;
 			}
+			
+			// if(capacity > capacity_){		//setting our capacity bigger than theirs
+			// 		//std::cout << capacity << capacity_ << std::endl;
+			// 		capacity_ *=2;
+			// 		std::cout << "Starting if" << capacity_ << std::endl;
+			// 		T* temp_elements_ = new T[capacity_];
+			// 		std::cout << "created new elements of capacity: " << capacity_ << std::endl;
+			// 		for( size_t i = 0; i < size_; i++){
+			// 			temp_elements_[i] = elements_[i];
+					
+			// 		}
+			// 		std::cout << "delete elemts" << std::endl;
+			// 	delete[] elements_;
+			// 	elements_ = temp_elements_; 
+			// }
 
 
 		}
@@ -202,8 +210,11 @@ class MyVector
 		 */
 		T& insert(size_t index, const T& element) {
 			size_++; 
+			//std::cout << "INSERTING element " << index <<  " " << size_ << std::endl;
 			if(size_ > capacity_){
-				this->reserve(size_);
+				//std::cout << "calling reserev func" << std::endl;
+				this->changeCapacity(size_);
+
 			}
 			for( size_t i = size_-1; i  > index; i-- ){
 			elements_[i] = elements_[i-1]; 		//copying over the element at that position and
@@ -283,11 +294,22 @@ class MyVector
 
 		void changeCapacity(size_t c) {
 			
-				if(c > capacity_){		
+			if(c < size_){		
 				throw std::out_of_range("Out of range");
 			}
-			while(c > capacity_){
-				capacity_ = 2 * capacity_;
+			if(c > capacity_){		//setting our capacity bigger than theirs
+					//std::cout << c << capacity_ << std::endl;
+					capacity_ *= 2;
+					std::cout << "Starting if" << capacity_ << std::endl;
+					T* temp_elements_ = new T[capacity_];
+					std::cout << temp_elements_ << std::endl;
+					std::cout << "created new elements of capacity: " << capacity_ << std::endl;
+					for( size_t i = 0; i < size_; i++){
+						temp_elements_[i] = elements_[i];
+					}
+					//std::cout << "delete elemts" << std::endl;
+				delete[] elements_;
+				elements_ = temp_elements_; 
 			}
 		
 
