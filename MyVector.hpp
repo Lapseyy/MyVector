@@ -35,13 +35,8 @@ class MyVector
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
 			elements_= new T[capacity]; // creates new array with elemnts of type T
-			if (MINIMUM_CAPACITY < capacity){
-				capacity_ = capacity; 
-			}									//this creates space of capacity of some size
-			else{
-				capacity_ = MINIMUM_CAPACITY;
-
-			}
+			capacity_ = MINIMUM_CAPACITY;
+			this->reserve(capacity);
 			// TODO: Your code here
 		}
 		
@@ -144,6 +139,7 @@ class MyVector
 			
 			if(capacity > capacity_){		//setting our capacity bigger than theirs
 					capacity_ *=2;
+					new T& = 
 
 			}
 
@@ -200,7 +196,9 @@ class MyVector
 		 */
 		T& insert(size_t index, const T& element) {
 			size_++; 
-
+			if(size_ > capacity_){
+				this->reserve(size_);
+			}
 			for( size_t i = size_-1; i  > index; i-- ){
 			elements_[i] = elements_[i-1]; 		//copying over the element at that position and
 			}										//at the same time moving it over while checking 
@@ -275,13 +273,17 @@ class MyVector
 		 * It's probably a good idea to make an additional helper function that decides
 		 * 	whether to change capacity at all (and to what new capacity), that your public functions can rely upon.
 		 */
+
+
 		void changeCapacity(size_t c) {
 			
 				if(c > capacity_){		
 				throw std::out_of_range("Out of range");
 			}
-			
-			capacity_ = c; 
+			while(c > capacity_){
+				capacity_ = 2 * capacity_;
+			}
+		
 
 			// TODO: Your code here
 		}

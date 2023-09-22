@@ -18,8 +18,19 @@ int main()
 {
 	//
 	cout << "Hello! Maybe use this source file for debugging?" << endl;
-	MyVector<int> v;
-	cout << "Never made it here";
+	MyVector<int> v(500);
+	cout << v.size() << endl;
+	cout << v.capacity() << endl;
+	for (int i = 0; i < 500; i++){
+		v.push_back(i);
+	}
+	cout << "Added 500 elements"  << endl;
+	for ( int i : {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}) {
+		v.push_back(i);
+	}
+			cout << v.size() << endl;
+		cout << v.capacity() << endl;
+	cout << "We made it here ";
 	
 	// //
 	// for ( int i = 0; i < 10; i++ ) {
