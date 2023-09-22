@@ -297,19 +297,19 @@ class MyVector
 			if(c < size_){		
 				throw std::out_of_range("Out of range");
 			}
-			if(c > capacity_){		//setting our capacity bigger than theirs
+			if(c > this->capacity_){		//setting our capacity bigger than theirs
 					//std::cout << c << capacity_ << std::endl;
-					capacity_ *= 2;
-					std::cout << "Starting if" << capacity_ << std::endl;
-					T* temp_elements_ = new T[capacity_];
+					this->capacity_ *= 2;
+					std::cout << "Starting if" << capacity_ << " " << size_ <<  std::endl;
+					T* temp_elements_ = new T[this->capacity_];
 					std::cout << temp_elements_ << std::endl;
-					std::cout << "created new elements of capacity: " << capacity_ << std::endl;
-					for( size_t i = 0; i < size_; i++){
-						temp_elements_[i] = elements_[i];
+					std::cout << "created new elements of capacity: " << capacity_  << std::endl;
+					for( size_t i = 0; i < this->size_; i++){
+						temp_elements_[i] = this->elements_[i];
 					}
 					//std::cout << "delete elemts" << std::endl;
-				delete[] elements_;
-				elements_ = temp_elements_; 
+				delete [] this->elements_;
+				this->elements_ = temp_elements_; 
 			}
 		
 
