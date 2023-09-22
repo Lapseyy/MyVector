@@ -30,6 +30,9 @@ int main()
 	}
 			cout << v.size() << endl;
 		cout << v.capacity() << endl;
+		v.push_back(5);
+		cout << v.size() << endl;
+		cout << v.capacity() << endl;
 	cout << "We made it here ";
 	
 	// //

@@ -138,10 +138,16 @@ class MyVector
 		void reserve(size_t capacity) {
 			
 			if(capacity > capacity_){		//setting our capacity bigger than theirs
-					capacity_ *=2;
-					new T& = 
 
+					capacity_ *=2;
+					T* temp_elements_ = new T[capacity_];
+					for( size_t i = 0; i < size_; i++){
+					temp_elements_[i] = elements_[i];
+					}
+				delete[] elements_;
+				elements_ = temp_elements_; 
 			}
+
 
 		}
 		
