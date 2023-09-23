@@ -24,20 +24,23 @@ int main()
 		int val = i * 2 - (100 / 2);
 		v.push_back(val);
 	}
-
+	MyVector<int> v2, v3(v);
+	v2 = v;
+	cout << v3.capacity() << " " << v3.size() << endl;
+	cout << v2.capacity() << " " << v2.size() << endl;
 	// cout << v.at(0) << endl;
 	// cout << v.at(35) << endl;
 	// cout << v.at(99) << endl;
 	
-	cout << v.capacity() << " " << v.size() << endl;
-	cout << v.at(77) << endl;
-	//v.insert(77, 22);
-	cout << v.at(76) << endl;
-	cout << v.at(77) << endl;
-	cout << v.at(78) << endl;
+	// cout << v.capacity() << " " << v.size() << endl;
+	// cout << v.at(77) << endl;
+	// //v.insert(77, 22);
+	// cout << v.at(76) << endl;
+	// cout << v.at(77) << endl;
+	// cout << v.at(78) << endl;
 
-	cout << v[-1] << " " << v[27] << " " << v[97] << endl;
-	cout << v.capacity() << " " << v.size() << endl;
+	// cout << v[-1] << " " << v[27] << " " << v[97] << endl;
+	// cout << v.capacity() << " " << v.size() << endl;
 
 	// MyVector<int> v(0);
 	// cout << v.size() << endl;

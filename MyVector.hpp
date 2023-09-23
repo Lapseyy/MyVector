@@ -75,6 +75,9 @@ class MyVector
 		MyVector& operator=(const MyVector& rhs) {
 			
 			// TODO: Your code here
+			changeCapacity(rhs.capacity());
+			size_ = rhs.size();
+			
 			for(size_t i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
 					elements_[i] = rhs.at(i);	
 			}
