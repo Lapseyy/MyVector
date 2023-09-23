@@ -47,20 +47,30 @@ int main()
 
 	// cout << checkIntegerVectorsEqual(v, v2) << endl;
 	// cout << checkIntegerVectorsEqual(v, v3) << endl;
-	MyVector<int> v(0);
-	cout << v.empty() << endl;
-	v.push_back(1);
-	cout << v.empty() << endl;
-	v.erase(0);
-	cout << v.empty() << endl;
+MyVector<int> v;
+for ( int i = 0; i < 10000; i++ ) {
+		v.push_back(i);
+	}
+	for ( int i = 0; i < 10000; i++ ) {
+		v.pop_back();
+	}
 
-	v.push_back(1);
-	v.push_back(1);
-	v.push_back(1);
-	v.push_back(1);
-	v.push_back(1);
-	v.clear();
-	cout << v.empty() << endl;
+	
+
+	// MyVector<int> v(0);
+	// cout << v.empty() << endl;
+	// v.push_back(1);
+	// cout << v.empty() << endl;
+	// v.erase(0);
+	// cout << v.empty() << endl;
+
+	// v.push_back(1);
+	// v.push_back(1);
+	// v.push_back(1);
+	// v.push_back(1);
+	// v.push_back(1);
+	// v.clear();
+	// cout << v.empty() << endl;
 
 	// cout << v.at(0) << endl;
 	// cout << v.at(35) << endl;

@@ -43,15 +43,8 @@ class MyVector
 		
 		/// Copy constructor
 		MyVector(const MyVector& other) {
-			
-			// TODO: Your code here
-			
-			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
-				for(size_t i =0; i < other.size(); i++){	// create a for looop that caps at other
-					elements_[i] = other.at(i);			//sets elements and other equal to each other
-			}
-			capacity_ = other.capacity();				//copying the capcity
-			size_ = other.size();					//copying the size
+			copyOther(other);
+					//copying the size
 		}
 		
 		/**
@@ -63,6 +56,10 @@ class MyVector
 			
 			// TODO: Your code here
 			this -> clear();	// clears the elements
+			delete [] elements_; // deletes the memory block
+			elements_ = nullptr;
+			size_ = 0;			// ressetting suze to be 0	
+			capacity_ = 0;		//resetting capacity to be 0
 
 		}
 		
@@ -72,13 +69,13 @@ class MyVector
 		
 		///	Assignment operator
 		MyVector& operator=(const MyVector& rhs) {
-			
 			// TODO: Your code here
-			changeCapacity(rhs.capacity());
-			size_ = rhs.size();
-			for(size_t i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
-					elements_[i] = rhs.at(i);	
-			}
+			copyOther(rhs);
+			// changeCapacity(rhs.capacity());
+			// size_ = rhs.size();
+			// for(size_t i = 0; i < rhs.size(); i++){	//just like the other we copy to rhs
+			// 		elements_[i] = rhs.at(i);	
+			// }
 			return* this;				//return 'this class itself/obk=ject'
 		}
 		
@@ -219,7 +216,6 @@ class MyVector
 		T& insert(size_t index, const T& element) {
 			if(index < 0 || index > size_){
 				throw std::out_of_range("Out of range");
-
 			}
 			size_++; 
 			//std::cout << "INSERTING element " << index <<  " " << size_ << std::endl;
@@ -259,7 +255,7 @@ class MyVector
 			for(size_t i = index; i < size_; i++){
 				elements_[i] = elements_[i + 1];
 			}
-			elements_[size_].~T();
+			elements_[size_-1].~T();
 			size_= size_ -1; 
 			changeCapacity(size_); 			//call capacity to modify the size
 			return size_;
@@ -271,11 +267,11 @@ class MyVector
 		 * data by setting size to zero and resetting the capacity.
 		*/
 		void clear() {
-			for(size_t i = 0; i < size_; i++ ){
+			for(size_t i = 0; i < capacity_; i++ ){
 			 	elements_[i].~T();
 			}
-			delete [] elements_; // deletes the memory block
-			elements_ = nullptr;
+			// delete [] elements_; // deletes the memory block
+			// elements_ = nullptr;
 			size_ = 0;			// ressetting suze to be 0	
 			capacity_ = 0;		//resetting capacity to be 0
 			// TODO: Your code here
@@ -325,12 +321,17 @@ class MyVector
 						temp_elements_[i] = this->elements_[i];
 					}
 					//std::cout << "delete elemts" << std::endl;
+				for(size_t i = 0; i < capacity_ ; i++){
+					elements_[i].~T();
+				}
 				delete [] this->elements_;
 				this->elements_ = temp_elements_; 
 			}
 			else if(c < capacity_ /3){
+				for(size_t i = capacity_/2; i < capacity_ ; i++){
+					elements_[i].~T();
+				}
 				capacity_ = capacity_ /2;
-
 			}
 	
 		
@@ -353,8 +354,14 @@ class MyVector
 		 * 4. Copy other relevant properties from the 'other' to 'this'
 		 */
 		void copyOther(const MyVector& other) {
-			this->~MyVector(); 
-			//this->MyVector(other); //calls the constructor that does steps 1-4
+			// TODO: Your code here
+			this->clear();
+			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
+				for(size_t i =0; i < other.size(); i++){	// create a for looop that caps at other
+					elements_[i] = other.at(i);			//sets elements and other equal to each other
+			}
+			capacity_ = other.capacity();				//copying the capcity
+			size_ = other.size();			
 
 			// TODO: Your code here
 		}
