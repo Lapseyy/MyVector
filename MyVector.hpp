@@ -124,6 +124,10 @@ class MyVector
 		
 		/// Return a reference to the element at an index
 		T& at(size_t index) const {
+			if(index < 0 || index >= size_){
+				throw std::range_error("Out of range");
+ 
+			}
 			return elements_[index];
 			// TODO: Your code here
 		}
@@ -137,7 +141,7 @@ class MyVector
 		 * Useful if we know we're about to add a large number of elements, and we'd like to avoid the overhead of many internal changes to capacity.
 		 */
 		void reserve(size_t capacity) {
-			std::cout << "RESERVE CALLED FOR CAPACITY: " << capacity << " C URRENT IS: " << capacity_ << std::endl;
+			//std::cout << "RESERVE CALLED FOR CAPACITY: " << capacity << " C URRENT IS: " << capacity_ << std::endl;
 			if(capacity > capacity_){
 				capacity_ = capacity;
 			}
@@ -210,6 +214,10 @@ class MyVector
 		 * Returns a reference to the newly added element (not the original).
 		 */
 		T& insert(size_t index, const T& element) {
+			if(index < 0 || index > size_){
+				throw std::out_of_range("Out of range");
+
+			}
 			size_++; 
 			//std::cout << "INSERTING element " << index <<  " " << size_ << std::endl;
 			if(size_ > capacity_){

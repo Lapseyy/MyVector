@@ -17,29 +17,44 @@ using std::cout, std::endl;
 int main()
 {
 	//
+
 	cout << "Hello! Maybe use this source file for debugging?" << endl;
-	MyVector<int> v(0);
-	cout << v.size() << endl;
-	cout << v.capacity() << endl;
-	for ( int i = 0; i < 1023; i++ ) {
-		v.push_back(i * 3);
+	MyVector<int> v(100);
+	for ( int i = 0; i < 100; i++ ) {
+ 		v.push_back (i);
 	}
-		cout << v.capacity() << " " << v.size() << endl;
-	v.push_back(44444);
 	cout << v.capacity() << " " << v.size() << endl;
-	v.push_back(55555);
-	cout << v.capacity() << " " << v.size() << endl;
-	v.push_back(66666);
+	cout << v.at(47) << endl;
+	v.erase(47);
+	cout << v.at(47) << endl;
 	cout << v.capacity() << " " << v.size() << endl;
 
-	for ( int i = 0; i < 343; i++ ) {
-				v.pop_back();
-			}
-			cout << v.capacity() << " " << v.size() << endl;
-			v.pop_back();
-			cout << v.capacity() << " " << v.size() << endl;
-			v.pop_back();
-			cout << v.capacity() << " " << v.size() << endl;
+	cout << v.at(0) << endl;
+	v.erase(0);
+	cout << v.at(0) << endl;
+	cout << v.capacity() << " " << v.size() << endl;
+	// MyVector<int> v(0);
+	// cout << v.size() << endl;
+	// cout << v.capacity() << endl;
+	// for ( int i = 0; i < 1023; i++ ) {
+	// 	v.push_back(i * 3);
+	// }
+	// 	cout << v.capacity() << " " << v.size() << endl;
+	// v.push_back(44444);
+	// cout << v.capacity() << " " << v.size() << endl;
+	// v.push_back(55555);
+	// cout << v.capacity() << " " << v.size() << endl;
+	// v.push_back(66666);
+	// cout << v.capacity() << " " << v.size() << endl;
+
+	// for ( int i = 0; i < 343; i++ ) {
+	// 			v.pop_back();
+	// 		}
+	// 		cout << v.capacity() << " " << v.size() << endl;
+	// 		v.pop_back();
+	// 		cout << v.capacity() << " " << v.size() << endl;
+	// 		v.pop_back();
+	// 		cout << v.capacity() << " " << v.size() << endl;
 // 	MyVector<int> v(1000);
 // 	for (int i = 0; i < 1000; i++){
 // 			v.push_back(i);
