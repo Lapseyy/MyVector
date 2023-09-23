@@ -49,7 +49,6 @@ class MyVector
 			this->elements_ = new T[other.capacity()];		//call to class of elements and = to size of other
 				for(size_t i =0; i < other.size(); i++){	// create a for looop that caps at other
 					elements_[i] = other.at(i);			//sets elements and other equal to each other
-
 			}
 			capacity_ = other.capacity();				//copying the capcity
 			size_ = other.size();					//copying the size
@@ -77,7 +76,6 @@ class MyVector
 			// TODO: Your code here
 			changeCapacity(rhs.capacity());
 			size_ = rhs.size();
-			
 			for(size_t i =0; i < rhs.size(); i++){	//just like the other we copy to rhs
 					elements_[i] = rhs.at(i);	
 			}
@@ -147,6 +145,7 @@ class MyVector
 			//std::cout << "RESERVE CALLED FOR CAPACITY: " << capacity << " C URRENT IS: " << capacity_ << std::endl;
 			if(capacity > capacity_){
 				capacity_ = capacity;
+
 			}
 			
 			// if(capacity > capacity_){		//setting our capacity bigger than theirs
@@ -176,7 +175,8 @@ class MyVector
 			if(index > capacity_){					//Setting element at index and then throw error if too big
 				throw std::out_of_range("Out of range");
 			}
-			else{									//making the elements_ at the index to be equal to elements
+			else{	
+				elements_[index].~T();		//calling destructor to set each of the elements to be 0
 				elements_[index] = element;
 				return elements_[index];   			//returning  index reference 
 			}
@@ -259,6 +259,7 @@ class MyVector
 			for(size_t i = index; i < size_; i++){
 				elements_[i] = elements_[i + 1];
 			}
+			elements_[size_].~T();
 			size_= size_ -1; 
 			changeCapacity(size_); 			//call capacity to modify the size
 			return size_;
@@ -270,8 +271,11 @@ class MyVector
 		 * data by setting size to zero and resetting the capacity.
 		*/
 		void clear() {
-			
+			for(size_t i = 0; i < size_; i++ ){
+			 	elements_[i].~T();
+			}
 			delete [] elements_; // deletes the memory block
+			elements_ = nullptr;
 			size_ = 0;			// ressetting suze to be 0	
 			capacity_ = 0;		//resetting capacity to be 0
 			// TODO: Your code here

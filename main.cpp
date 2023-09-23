@@ -13,21 +13,55 @@
 ///	Your welcome
 using std::cout, std::endl;
 
+bool checkIntegerVectorsEqual(const MyVector<int>& v1, const MyVector<int>& v2)
+{
+	//
+	if ( v1.size() != v2.size() ) {
+		return false;
+	}
+	
+	for ( size_t i = 0; i < v1.size(); i++ ) {
+		if ( v1.at(i) != v2.at(i) ) {
+			return false;
+		}
+	}
+	
+	return true;
+}
+
 //
 int main()
 {
 	//
 
 	cout << "Hello! Maybe use this source file for debugging?" << endl;
-	MyVector<int> v(100);
-	for ( size_t i = 0; i < 100; i++ ) {
-		int val = i * 2 - (100 / 2);
-		v.push_back(val);
-	}
-	MyVector<int> v2, v3(v);
-	v2 = v;
-	cout << v3.capacity() << " " << v3.size() << endl;
-	cout << v2.capacity() << " " << v2.size() << endl;
+	// MyVector<int> v(100);
+	// for ( size_t i = 0; i < 100; i++ ) {
+	// 	int val = i * 2 - (100 / 2);
+	// 	v.push_back(val);
+	// }
+	// MyVector<int> v2, v3(v);
+	// v2 = v;
+	// cout << v3.capacity() << " " << v3.size() << endl;
+	// cout << v2.capacity() << " " << v2.size() << endl;
+
+	// cout << checkIntegerVectorsEqual(v, v2) << endl;
+	// cout << checkIntegerVectorsEqual(v, v3) << endl;
+	MyVector<int> v(0);
+	cout << v.empty() << endl;
+	v.push_back(1);
+	cout << v.empty() << endl;
+	v.erase(0);
+	cout << v.empty() << endl;
+
+	v.push_back(1);
+	v.push_back(1);
+	v.push_back(1);
+	v.push_back(1);
+	v.push_back(1);
+	v.clear();
+	cout << v.empty() << endl;
+
 	// cout << v.at(0) << endl;
 	// cout << v.at(35) << endl;
 	// cout << v.at(99) << endl;
