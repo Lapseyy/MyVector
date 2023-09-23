@@ -36,6 +36,10 @@ int main()
 				v.pop_back();
 			}
 			cout << v.capacity() << " " << v.size() << endl;
+			v.pop_back();
+			cout << v.capacity() << " " << v.size() << endl;
+			v.pop_back();
+			cout << v.capacity() << " " << v.size() << endl;
 // 	MyVector<int> v(1000);
 // 	for (int i = 0; i < 1000; i++){
 // 			v.push_back(i);

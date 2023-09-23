@@ -249,6 +249,7 @@ class MyVector
 				elements_[i] = elements_[i + 1];
 			}
 			size_= size_ -1; 
+			changeCapacity(size_); 			//call capacity to modify the size
 			return size_;
 			// TODO: Your code here
 		}
@@ -312,6 +313,11 @@ class MyVector
 				delete [] this->elements_;
 				this->elements_ = temp_elements_; 
 			}
+			else if(c < capacity_ /3){
+				capacity_ = capacity_ /2;
+
+			}
+	
 		
 
 			// TODO: Your code here
