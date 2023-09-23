@@ -34,9 +34,10 @@ class MyVector
 		
 		/// Normal constructor
 		MyVector(size_t capacity = MyVector::DEFAULT_CAPACITY) {
-			elements_= new T[capacity]; // creates new array with elemnts of type T
+			
 			capacity_ = DEFAULT_CAPACITY;
 			this->changeCapacity(capacity);
+			elements_= new T[capacity_]; // creates new array with elemnts of type T
 			// TODO: Your code here
 		}
 		
@@ -195,7 +196,7 @@ class MyVector
 		 * Returns the new size.
 		 */
 		size_t pop_back() {
-			return this->erase(size_);
+			return this->erase(size_ - 1);
 			// TODO: Your code here
 		}
 		
@@ -299,11 +300,11 @@ class MyVector
 			}
 			if(c > this->capacity_){		//setting our capacity bigger than theirs
 					//std::cout << c << capacity_ << std::endl;
-					this->capacity_ *= 2;
-					std::cout << "Starting if" << capacity_ << " " << size_ <<  std::endl;
+					this->capacity_ = this->capacity_ * 2;
+					//std::cout << "Starting if" << capacity_ << " " << size_ <<  std::endl;
 					T* temp_elements_ = new T[this->capacity_];
-					std::cout << temp_elements_ << std::endl;
-					std::cout << "created new elements of capacity: " << capacity_  << std::endl;
+					//std::cout << temp_elements_ << std::endl;
+					//std::cout << "created new elements of capacity: " << capacity_  << std::endl;
 					for( size_t i = 0; i < this->size_; i++){
 						temp_elements_[i] = this->elements_[i];
 					}
