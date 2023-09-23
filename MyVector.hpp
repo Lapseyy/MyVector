@@ -85,7 +85,7 @@ class MyVector
 		T& operator[](size_t index) const {
 			
 			// TODO: Your code here
-			return elements_[index]; 		// we overload the operator with  elements of index 
+			return this->at(index); 		// we overload the operator with  elements of index 
 
 		}
 		

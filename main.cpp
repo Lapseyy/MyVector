@@ -20,19 +20,25 @@ int main()
 
 	cout << "Hello! Maybe use this source file for debugging?" << endl;
 	MyVector<int> v(100);
-	for ( int i = 0; i < 100; i++ ) {
- 		v.push_back (i);
+	for ( size_t i = 0; i < 100; i++ ) {
+		int val = i * 2 - (100 / 2);
+		v.push_back(val);
 	}
+
+	// cout << v.at(0) << endl;
+	// cout << v.at(35) << endl;
+	// cout << v.at(99) << endl;
+	
 	cout << v.capacity() << " " << v.size() << endl;
-	cout << v.at(47) << endl;
-	v.erase(47);
-	cout << v.at(47) << endl;
+	cout << v.at(77) << endl;
+	//v.insert(77, 22);
+	cout << v.at(76) << endl;
+	cout << v.at(77) << endl;
+	cout << v.at(78) << endl;
+
+	cout << v[-1] << " " << v[27] << " " << v[97] << endl;
 	cout << v.capacity() << " " << v.size() << endl;
 
-	cout << v.at(0) << endl;
-	v.erase(0);
-	cout << v.at(0) << endl;
-	cout << v.capacity() << " " << v.size() << endl;
 	// MyVector<int> v(0);
 	// cout << v.size() << endl;
 	// cout << v.capacity() << endl;
