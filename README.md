@@ -1,8 +1,8 @@
 # Project 1 - Vectors
-My submission for Computer Science 131, Section 07, Lab 5
+My submission for Computer Science 131, Section 07, Lab 1
 # My Information
-* Name: Edmarck SOsa Pineda
-* CWID: 888
+* Name: Edmarck Sosa Pineda
+* CWID: 888977063
 * Email: esosa@csu.fullerton.edu
 # Instructions
 Hey professor, when you compile my program, make sure to do your method as you mentioned
