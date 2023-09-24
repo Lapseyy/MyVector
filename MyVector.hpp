@@ -56,6 +56,7 @@ class MyVector
 			
 			// TODO: Your code here
 			this -> clear();	// clears the elements
+			
 			delete [] elements_; // deletes the memory block
 			elements_ = nullptr;
 			size_ = 0;			// ressetting suze to be 0	
@@ -227,7 +228,7 @@ class MyVector
 			for( size_t i = size_-1; i  > index; i-- ){
 			elements_[i] = elements_[i-1]; 		//copying over the element at that position and
 			}										//at the same time moving it over while checking 
-
+			elements_[index].~T();
 			elements_[index] = element;
 
 			return elements_[index];
@@ -317,18 +318,20 @@ class MyVector
 					T* temp_elements_ = new T[this->capacity_];
 					//std::cout << temp_elements_ << std::endl;
 					//std::cout << "created new elements of capacity: " << capacity_  << std::endl;
-					for( size_t i = 0; i < this->size_; i++){
+					for( size_t i = 0; i < this->size_ - 1; i++){
 						temp_elements_[i] = this->elements_[i];
 					}
 					//std::cout << "delete elemts" << std::endl;
 				for(size_t i = 0; i < capacity_ ; i++){
-					elements_[i].~T();
+					this->elements_[i].~T();
 				}
 				delete [] this->elements_;
 				this->elements_ = temp_elements_; 
+				temp_elements_ = nullptr;
+				delete [] temp_elements_;
 			}
 			else if(c < capacity_ /3){
-				for(size_t i = capacity_/2; i < capacity_ ; i++){
+				for(size_t i = capacity_/2; i <= capacity_ ; i++){
 					elements_[i].~T();
 				}
 				capacity_ = capacity_ /2;

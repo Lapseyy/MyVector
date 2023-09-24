@@ -48,10 +48,10 @@ int main()
 	// cout << checkIntegerVectorsEqual(v, v2) << endl;
 	// cout << checkIntegerVectorsEqual(v, v3) << endl;
 MyVector<int> v;
-for ( int i = 0; i < 10000; i++ ) {
+for ( int i = 0; i < 5; i++ ) {
 		v.push_back(i);
 	}
-	for ( int i = 0; i < 10000; i++ ) {
+	for ( int i = 0; i < 5; i++ ) {
 		v.pop_back();
 	}
 
